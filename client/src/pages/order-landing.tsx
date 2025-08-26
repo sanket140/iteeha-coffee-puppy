@@ -45,15 +45,15 @@ export default function OrderLanding() {
                   data-testid="img-hero-coffee"
                 />
               </div>
-              
+
               <h1 className="font-baloo text-5xl lg:text-6xl font-bold mb-6" data-testid="text-hero-title">
                 Let's get ordering
               </h1>
-              
+
               <p className="text-xl opacity-90 mb-8" data-testid="text-hero-subtitle">
                 Craving something delicious? Let us bring the finest coffee and treats right to your doorstep.
               </p>
-              
+
               <div className="flex gap-4 justify-center lg:justify-start mb-8">
                 <Badge className="bg-playful-teal text-coffee-brown px-4 py-2 text-lg" data-testid="badge-delivery">
                   Delivery
@@ -63,7 +63,7 @@ export default function OrderLanding() {
                 </Badge>
               </div>
             </div>
-            
+
             <div className="relative">
               <img 
                 src="https://iteeha.coffee/images/vfx.png" 
@@ -71,7 +71,7 @@ export default function OrderLanding() {
                 className="rounded-3xl shadow-2xl w-full animate-bounce-gentle"
                 data-testid="img-hero-iteeha"
               />
-              
+
               <div className="absolute -bottom-6 -right-6 bg-golden-fur p-4 rounded-full shadow-lg animate-wag">
                 <Coffee className="text-coffee-brown" size={32} />
               </div>
@@ -90,7 +90,7 @@ export default function OrderLanding() {
             <p className="text-xl text-coffee-brown opacity-80 mb-8" data-testid="text-location-subtitle">
               We'll deliver fresh and hot to your location
             </p>
-            
+
             <Card className="bg-cream-latte p-8 shadow-lg">
               <CardContent className="p-0">
                 <div className="space-y-6">
@@ -98,11 +98,11 @@ export default function OrderLanding() {
                     <Target className="mr-2" size={20} />
                     Use my current location
                   </Button>
-                  
+
                   <div className="text-coffee-brown opacity-60 font-semibold">
                     or enter manually
                   </div>
-                  
+
                   <div className="relative">
                     <MapPin className="absolute left-4 top-4 text-coffee-brown opacity-60" size={20} />
                     <Input 
@@ -111,7 +111,7 @@ export default function OrderLanding() {
                       data-testid="input-address"
                     />
                   </div>
-                  
+
                   <Button 
                     asChild
                     className="w-full bg-coffee-brown text-cream-latte py-4 text-lg font-semibold hover:bg-opacity-90 paw-cursor"
@@ -140,7 +140,7 @@ export default function OrderLanding() {
               Simple steps to satisfy your cravings
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step, index) => (
               <Card key={index} className="bg-white p-8 shadow-lg text-center hover:shadow-xl transition-shadow">
@@ -158,15 +158,15 @@ export default function OrderLanding() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="text-4xl mb-4 text-playful-teal" data-testid={`icon-step-${index}`}>
                     {step.icon}
                   </div>
-                  
+
                   <h3 className="font-baloo text-2xl font-bold text-coffee-brown mb-4" data-testid={`title-step-${index}`}>
                     {step.title}
                   </h3>
-                  
+
                   <p className="text-coffee-brown opacity-80" data-testid={`description-step-${index}`}>
                     {step.description}
                   </p>
@@ -188,7 +188,7 @@ export default function OrderLanding() {
               A taste of our delicious offerings
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="bg-cream-latte p-6 text-center shadow-lg hover:shadow-xl transition-shadow paw-cursor group">
               <CardContent className="p-0">
@@ -203,7 +203,7 @@ export default function OrderLanding() {
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="bg-cream-latte p-6 text-center shadow-lg hover:shadow-xl transition-shadow paw-cursor group">
               <CardContent className="p-0">
                 <div className="bg-playful-teal p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:animate-bounce-gentle">
@@ -217,7 +217,7 @@ export default function OrderLanding() {
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="bg-cream-latte p-6 text-center shadow-lg hover:shadow-xl transition-shadow paw-cursor group">
               <CardContent className="p-0">
                 <div className="bg-puppy-pink p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
@@ -231,7 +231,7 @@ export default function OrderLanding() {
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="bg-cream-latte p-6 text-center shadow-lg hover:shadow-xl transition-shadow paw-cursor group">
               <CardContent className="p-0">
                 <div className="bg-caramel p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
@@ -261,7 +261,7 @@ export default function OrderLanding() {
           <p className="text-xl opacity-90 mb-8" data-testid="text-final-cta-subtitle">
             Fresh coffee, delicious food, and puppy love delivered to your door
           </p>
-          
+
           <Button 
             asChild
             className="bg-playful-teal text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor text-lg"

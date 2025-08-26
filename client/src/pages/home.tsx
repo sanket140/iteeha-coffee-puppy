@@ -2,27 +2,29 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { ShoppingCart, Heart, Dog, Home as HomeIcon, Coffee, Calendar, Star, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [pawTrails, setPawTrails] = useState<Array<{id: number, x: number, y: number}>>([]);
+  const [clickCount, setClickCount] = useState(0);
 
   const carouselImages = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=600",
+      image: "https://iteeha.coffee/images/vfx.png",
       title: "Coffee. Craft. Conversations.",
       subtitle: "let us take care of the rest."
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=600",
+      image: "https://iteeha.coffee/images/urmi.jpg",
       title: "Step in, relax,",
       subtitle: "enjoy every sip with our furry friends."
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=600",
+      image: "https://iteeha.coffee/images/e2.jpg",
       title: "Premium Coffee Experience",
       subtitle: "handcrafted with love and puppy magic."
     }
@@ -40,6 +42,28 @@ export default function Home() {
     const timer = setInterval(nextSlide, 4000);
     return () => clearInterval(timer);
   }, []);
+
+  const createPawTrail = useCallback((e: React.MouseEvent) => {
+    const newPaw = {
+      id: Date.now(),
+      x: e.clientX,
+      y: e.clientY
+    };
+    setPawTrails(prev => [...prev, newPaw]);
+    setClickCount(prev => prev + 1);
+    
+    setTimeout(() => {
+      setPawTrails(prev => prev.filter(paw => paw.id !== newPaw.id));
+    }, 2000);
+  }, []);
+
+  const handleInteractiveClick = useCallback((e: React.MouseEvent) => {
+    createPawTrail(e);
+    e.currentTarget.classList.add('animate-bounce');
+    setTimeout(() => {
+      e.currentTarget.classList.remove('animate-bounce');
+    }, 600);
+  }, [createPawTrail]);
 
   const favorites = [
     {
@@ -100,33 +124,48 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      {/* Paw Trails */}
+      {pawTrails.map(paw => (
+        <div
+          key={paw.id}
+          className="fixed pointer-events-none z-50 animate-paw-print"
+          style={{
+            left: paw.x - 16,
+            top: paw.y - 16,
+          }}
+        >
+          <Dog className="text-bright-puppy-pink w-8 h-8" />
+        </div>
+      ))}
+
       {/* Image Carousel Banner Section */}
-      <section className="relative h-screen overflow-hidden">
+      <section className="relative h-screen overflow-hidden" onClick={createPawTrail}>
         <div className="relative w-full h-full">
           {carouselImages.map((slide, index) => (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                index === currentSlide ? 'opacity-100' : 'opacity-0'
+              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
               }`}
+              style={{
+                backgroundImage: `url(${slide.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+              }}
             >
-              <div 
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage: `url('${slide.image}')`
-                }}
-              ></div>
-              <div className="absolute inset-0 bg-coffee-brown bg-opacity-50"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/80"></div>
               
               <div className="relative z-10 flex items-center justify-center h-full">
-                <div className="text-center text-cream-latte px-4">
-                  <h1 className="font-baloo text-5xl lg:text-7xl font-bold mb-6 leading-tight hover-wiggle">
-                    Coffee. Craft.<br />
-                    <span className="text-warm-golden hover-wiggle inline-block">Conversations</span><br />
-                    <span className="text-bright-puppy-pink font-pacifico text-4xl lg:text-5xl hover-bounce inline-block">& Cuddles</span>
+                <div className="text-center px-4 bg-black/30 rounded-3xl backdrop-blur-sm p-12 border border-white/20">
+                  <h1 className="font-baloo text-5xl lg:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-2xl">
+                    <span className="inline-block hover:animate-wiggle transition-all duration-300 cursor-pointer text-white" onClick={handleInteractiveClick}>Coffee.</span>{" "}
+                    <span className="inline-block hover:animate-wiggle transition-all duration-300 cursor-pointer text-white" onClick={handleInteractiveClick}>Craft.</span><br />
+                    <span className="text-yellow-400 hover:animate-wiggle inline-block transition-all duration-300 cursor-pointer hover:scale-110 drop-shadow-2xl" onClick={handleInteractiveClick}>Conversations</span><br />
+                    <span className="text-pink-400 font-pacifico text-4xl lg:text-5xl hover:animate-bounce inline-block transition-all duration-300 cursor-pointer hover:scale-110 drop-shadow-2xl" onClick={handleInteractiveClick}>& Cuddles</span>
                   </h1>
                   
-                  <p className="text-xl mb-8 opacity-90">
+                  <p className="text-xl mb-8 text-white drop-shadow-lg font-medium">
                     Where every cup tells a story and every pup finds a friend.<br />
                     Handcrafted coffee, cozy vibes, and furry companions to warm your heart.
                   </p>
@@ -134,7 +173,7 @@ export default function Home() {
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button 
                       asChild
-                      className="bg-bright-puppy-pink text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor"
+                      className="bg-pink-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-600 transition-all transform hover:scale-110 hover-glow paw-cursor shadow-2xl"
                     >
                       <Link href="/order-landing">
                         <ShoppingCart className="mr-2" size={20} />
@@ -144,7 +183,7 @@ export default function Home() {
                     <Button 
                       asChild
                       variant="outline"
-                      className="border-2 border-warm-golden text-warm-golden bg-transparent px-8 py-4 rounded-full font-semibold hover:bg-warm-golden hover:text-coffee-brown transition-all transform hover:scale-110 hover-bounce paw-cursor"
+                      className="border-2 border-yellow-400 text-yellow-400 bg-black/20 backdrop-blur-sm px-8 py-4 rounded-full font-semibold hover:bg-yellow-400 hover:text-black transition-all transform hover:scale-110 hover-bounce paw-cursor shadow-2xl"
                     >
                       <Link href="/about">
                         <Dog className="mr-2" size={20} />
@@ -159,17 +198,23 @@ export default function Home() {
           
           {/* Navigation Arrows */}
           <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-bright-puppy-pink bg-opacity-80 text-coffee-brown p-3 rounded-full hover:bg-opacity-100 transition-all hover:scale-110 z-20"
+            onClick={(e) => {
+              handleInteractiveClick(e);
+              prevSlide();
+            }}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-bright-puppy-pink bg-opacity-80 text-coffee-brown p-3 rounded-full hover:bg-opacity-100 transition-all hover:scale-125 hover:rotate-12 z-20 group"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={24} className="group-hover:animate-bounce" />
           </button>
           
           <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-bright-puppy-pink bg-opacity-80 text-coffee-brown p-3 rounded-full hover:bg-opacity-100 transition-all hover:scale-110 z-20"
+            onClick={(e) => {
+              handleInteractiveClick(e);
+              nextSlide();
+            }}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-bright-puppy-pink bg-opacity-80 text-coffee-brown p-3 rounded-full hover:bg-opacity-100 transition-all hover:scale-125 hover:-rotate-12 z-20 group"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={24} className="group-hover:animate-bounce" />
           </button>
           
           {/* Dot Indicators */}
@@ -208,13 +253,14 @@ export default function Home() {
             {favorites.map((item) => (
               <Card 
                 key={item.id}
-                className="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all transform hover:scale-110 hover-glow paw-cursor group"
+                className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all transform hover:scale-105 hover:-rotate-1 hover-glow paw-cursor group cursor-pointer"
+                onClick={handleInteractiveClick}
               >
                 <CardContent className="p-6">
                   <img 
                     src={item.image} 
                     alt={item.name}
-                    className="w-full h-48 object-cover rounded-2xl mb-4"
+                    className="w-full h-48 object-cover rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300"
                   />
                   
                   <div className="relative">
@@ -408,16 +454,20 @@ export default function Home() {
           
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-cream-latte p-8 shadow-lg text-center">
+              <Card 
+                key={index} 
+                className="bg-cream-latte p-8 shadow-lg text-center hover:shadow-xl transition-all transform hover:scale-105 hover:rotate-1 cursor-pointer group"
+                onClick={handleInteractiveClick}
+              >
                 <CardContent className="p-8">
                   <div className="flex justify-center mb-4">
                     <img 
                       src={testimonial.avatar} 
                       alt={testimonial.name}
-                      className="w-16 h-16 rounded-full object-cover"
+                      className="w-16 h-16 rounded-full object-cover group-hover:scale-110 transition-transform duration-300 group-hover:rotate-12"
                     />
                   </div>
-                  <div className="text-4xl mb-4">
+                  <div className="text-4xl mb-4 group-hover:animate-bounce">
                     {testimonial.icon}
                   </div>
                   <p className="text-coffee-brown opacity-80 mb-4 italic">

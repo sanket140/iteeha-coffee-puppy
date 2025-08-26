@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Mail, Clock, MapPin, Dog, Phone, MessageCircle, Send, Instagram } from "lucide-react";
+import { useState, useCallback } from "react";
 
 export default function Contact() {
   const locations = [
@@ -43,7 +44,7 @@ export default function Contact() {
             <Mail className="text-playful-teal" size={48} />
             <MessageCircle className="text-puppy-pink" size={48} />
           </div>
-          
+
           <h1 className="font-baloo text-5xl lg:text-6xl font-bold mb-6" data-testid="text-contact-title">
             Contact Us ☕
           </h1>
@@ -62,7 +63,7 @@ export default function Contact() {
               <h2 className="font-baloo text-3xl font-bold text-coffee-brown mb-8" data-testid="text-message-title">
                 Send us a Message
               </h2>
-              
+
               <Card className="bg-cream-latte bg-opacity-50 p-8 shadow-lg">
                 <CardContent className="p-0">
                   <form className="space-y-6">
@@ -89,7 +90,7 @@ export default function Contact() {
                         />
                       </div>
                     </div>
-                    
+
                     <div>
                       <label className="text-sm font-semibold text-coffee-brown mb-2 block">
                         Phone
@@ -101,7 +102,7 @@ export default function Contact() {
                         data-testid="input-phone"
                       />
                     </div>
-                    
+
                     <div>
                       <label className="text-sm font-semibold text-coffee-brown mb-2 block">
                         Contact Person *
@@ -119,7 +120,7 @@ export default function Contact() {
                         </SelectContent>
                       </Select>
                     </div>
-                    
+
                     <div>
                       <label className="text-sm font-semibold text-coffee-brown mb-2 block">
                         Message *
@@ -131,7 +132,7 @@ export default function Contact() {
                         data-testid="textarea-message"
                       />
                     </div>
-                    
+
                     <Button 
                       type="submit"
                       className="w-full bg-golden-fur text-coffee-brown py-4 rounded-2xl font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor"
@@ -144,13 +145,13 @@ export default function Contact() {
                 </CardContent>
               </Card>
             </div>
-            
+
             {/* Contact Info */}
             <div>
               <h3 className="font-baloo text-3xl font-bold text-coffee-brown mb-8" data-testid="text-get-in-touch-title">
                 Get in Touch
               </h3>
-              
+
               <div className="space-y-6 mb-8">
                 <div className="flex items-start space-x-4">
                   <div className="bg-golden-fur p-3 rounded-full">
@@ -165,7 +166,7 @@ export default function Contact() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
                   <div className="bg-playful-teal p-3 rounded-full">
                     <Clock className="text-cream-latte" size={24} />
@@ -180,7 +181,7 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
                   <div className="bg-puppy-pink p-3 rounded-full">
                     <Instagram className="text-cream-latte" size={24} />
@@ -215,7 +216,7 @@ export default function Contact() {
               Visit us at any of our cozy Mumbai locations
             </p>
           </div>
-          
+
           <div className="grid lg:grid-cols-3 gap-8">
             {locations.map((location, index) => (
               <Card key={index} className="bg-white shadow-lg hover:shadow-xl transition-shadow">
@@ -262,7 +263,7 @@ export default function Contact() {
           <p className="text-xl opacity-90 mb-8 max-w-3xl mx-auto" data-testid="text-visit-cta-subtitle">
             We're brewing daily from 7:30 AM to 11:30 PM. Find us in the heart of Mumbai with our furry friends!
           </p>
-          
+
           <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             <div className="flex flex-col items-center">
               <Mail className="text-golden-fur mb-2" size={32} />
