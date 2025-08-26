@@ -1,0 +1,996 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iteeha Coffee & Pups | Coffee, Craft, Conversations & Cuddles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee-brown': '#4B2E2B',
+                        'cream-latte': '#F5E6D3',
+                        'caramel': '#C98A5D',
+                        'playful-teal': '#3BB4A1',
+                        'puppy-pink': '#F4A6B2',
+                        'golden-fur': '#F7C873'
+                    },
+                    fontFamily: {
+                        'baloo': ['Baloo 2', 'cursive'],
+                        'nunito': ['Nunito', 'sans-serif'],
+                        'pacifico': ['Pacifico', 'cursive']
+                    },
+                    animation: {
+                        'wag': 'wag 0.5s ease-in-out infinite alternate',
+                        'bounce-gentle': 'bounce-gentle 2s ease-in-out infinite',
+                        'steam': 'steam 3s ease-in-out infinite',
+                        'paw-print': 'paw-print 0.3s ease-out'
+                    },
+                    keyframes: {
+                        'wag': {
+                            '0%': { transform: 'rotate(-10deg)' },
+                            '100%': { transform: 'rotate(10deg)' }
+                        },
+                        'bounce-gentle': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' }
+                        },
+                        'steam': {
+                            '0%': { opacity: 0.7, transform: 'translateY(0px) scale(1)' },
+                            '50%': { opacity: 0.4, transform: 'translateY(-10px) scale(1.1)' },
+                            '100%': { opacity: 0.1, transform: 'translateY(-20px) scale(1.2)' }
+                        },
+                        'paw-print': {
+                            '0%': { transform: 'scale(0) rotate(0deg)', opacity: 0 },
+                            '50%': { transform: 'scale(1.2) rotate(5deg)', opacity: 1 },
+                            '100%': { transform: 'scale(1) rotate(0deg)', opacity: 0.8 }
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .paw-cursor {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="%23C98A5D"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-4 5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm8 0c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-4 4c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4z"/></svg>'), auto;
+        }
+        
+        .steam-effect::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(to top, rgba(255,255,255,0.6), transparent);
+            border-radius: 2px;
+            animation: steam 2s ease-in-out infinite;
+        }
+        
+        .paw-separator {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="20" viewBox="0 0 30 20" fill="%23C98A5D"><circle cx="15" cy="10" r="3"/><circle cx="10" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="8" cy="14" r="2"/><circle cx="22" cy="14" r="2"/></svg>');
+            background-repeat: repeat-x;
+            background-position: center;
+            height: 20px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body class="font-nunito bg-cream-latte text-coffee-brown">
+    <!-- @COMPONENT: Navigation -->
+    <nav class="bg-coffee-brown text-cream-latte sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <i class="fas fa-coffee text-2xl text-golden-fur"></i>
+                        <i class="fas fa-heart text-xs text-puppy-pink absolute -top-1 -right-1 animate-pulse"></i>
+                    </div>
+                    <span class="font-baloo text-xl font-bold">Iteeha Coffee & Pups</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="hover:text-golden-fur transition-colors paw-cursor">Home</a>
+                    <a href="#menu" class="hover:text-golden-fur transition-colors paw-cursor">Menu</a>
+                    <a href="#about" class="hover:text-golden-fur transition-colors paw-cursor">About</a>
+                    <a href="#contact" class="hover:text-golden-fur transition-colors paw-cursor">Contact</a>
+                    <button class="bg-playful-teal px-4 py-2 rounded-full hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor">
+                        <i class="fas fa-shopping-cart mr-2"></i>Order Now
+                    </button>
+                </div>
+                
+                <button class="md:hidden text-cream-latte">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- @COMPONENT: Hero Section -->
+    <section id="home" class="relative bg-gradient-to-br from-coffee-brown via-caramel to-coffee-brown min-h-screen flex items-center">
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+        
+        <!-- Coffee shop with puppies background -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080');"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <h1 class="font-baloo text-5xl lg:text-7xl font-bold text-cream-latte mb-6 leading-tight">
+                        Coffee. Craft. <br>
+                        <span class="text-golden-fur">Conversations</span> <br>
+                        <span class="text-puppy-pink font-pacifico text-4xl lg:text-5xl">& Cuddles</span>
+                    </h1>
+                    
+                    <p class="text-xl text-cream-latte mb-8 opacity-90">
+                        Where every cup tells a story and every pup finds a friend. 
+                        Handcrafted coffee, cozy vibes, and furry companions to warm your heart.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button class="bg-playful-teal text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor relative steam-effect">
+                            <i class="fas fa-shopping-cart mr-2"></i>Order Now
+                        </button>
+                        <button class="border-2 border-cream-latte text-cream-latte px-8 py-4 rounded-full font-semibold hover:bg-cream-latte hover:text-coffee-brown transition-all transform hover:scale-105 paw-cursor">
+                            <i class="fas fa-paw mr-2"></i>Meet Our Pups
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <!-- Cozy cafe with dogs -->
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Cozy cafe interior with friendly dogs" class="rounded-3xl shadow-2xl w-full animate-bounce-gentle">
+                    
+                    <div class="absolute -bottom-6 -right-6 bg-golden-fur p-4 rounded-full shadow-lg animate-wag">
+                        <i class="fas fa-dog text-coffee-brown text-2xl"></i>
+                    </div>
+                    
+                    <div class="absolute -top-6 -left-6 bg-puppy-pink p-4 rounded-full shadow-lg">
+                        <i class="fas fa-heart text-cream-latte text-xl animate-pulse"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-cream-latte animate-bounce">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero Section -->
+
+    <!-- Paw Print Separator -->
+    <div class="paw-separator my-8"></div>
+
+    <!-- @COMPONENT: Puppy-Named Coffee Specials -->
+    <section id="specials" class="py-20 bg-cream-latte">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-4">
+                    Our Pup-ular Favorites
+                </h2>
+                <p class="text-xl text-coffee-brown opacity-80 font-pacifico">
+                    Handcrafted with premium ingredients and a dash of puppy love
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Golden Retriever Blend (Caramel Macchiato) -->
+                <div class="bg-white rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105 paw-cursor group">
+                    <!-- Golden retriever with coffee cup -->
+                    <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" alt="Golden retriever sitting next to a caramel macchiato" class="w-full h-48 object-cover rounded-2xl mb-4">
+                    
+                    <div class="relative">
+                        <span class="bg-golden-fur text-coffee-brown px-3 py-1 rounded-full text-sm font-semibold">
+                            <i class="fas fa-dog mr-1"></i>Golden's Choice
+                        </span>
+                        
+                        <h3 class="font-baloo text-2xl font-bold text-coffee-brown mt-4 mb-2">
+                            Golden Retriever Blend
+                        </h3>
+                        <p class="text-coffee-brown opacity-70 mb-4">
+                            Espresso with steamed milk and vanilla, topped with golden caramel swirls
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-caramel">₹225</span>
+                            <div class="text-golden-fur group-hover:animate-wag">
+                                <i class="fas fa-paw text-lg"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pug's Espresso Delight -->
+                <div class="bg-white rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105 paw-cursor group">
+                    <!-- Pug with espresso -->
+                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" alt="Adorable pug sitting next to a small espresso cup" class="w-full h-48 object-cover rounded-2xl mb-4">
+                    
+                    <div class="relative">
+                        <span class="bg-coffee-brown text-cream-latte px-3 py-1 rounded-full text-sm font-semibold">
+                            <i class="fas fa-dog mr-1"></i>Pug's Pick
+                        </span>
+                        
+                        <h3 class="font-baloo text-2xl font-bold text-coffee-brown mt-4 mb-2">
+                            Pug's Espresso Delight
+                        </h3>
+                        <p class="text-coffee-brown opacity-70 mb-4">
+                            Rich, bold double shot espresso - small but mighty, just like our pugs!
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-caramel">₹160</span>
+                            <div class="text-coffee-brown group-hover:animate-wag">
+                                <i class="fas fa-paw text-lg"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Beagle's Matcha Magic -->
+                <div class="bg-white rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105 paw-cursor group">
+                    <!-- Puppies drinking coffee -->
+                    <img src="https://images.unsplash.com/photo-1551717743-49959800b1f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" alt="Cute puppies gathered around colorful coffee cups" class="w-full h-48 object-cover rounded-2xl mb-4">
+                    
+                    <div class="relative">
+                        <span class="bg-playful-teal text-cream-latte px-3 py-1 rounded-full text-sm font-semibold">
+                            <i class="fas fa-dog mr-1"></i>Pup Special
+                        </span>
+                        
+                        <h3 class="font-baloo text-2xl font-bold text-coffee-brown mt-4 mb-2">
+                            Beagle's Matcha Magic
+                        </h3>
+                        <p class="text-coffee-brown opacity-70 mb-4">
+                            Premium matcha powder with steamed oat milk - energetic and wholesome
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-caramel">₹320</span>
+                            <div class="text-playful-teal group-hover:animate-wag">
+                                <i class="fas fa-paw text-lg"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-coffee-brown text-cream-latte px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor">
+                    <i class="fas fa-bone mr-2"></i>See Full Menu
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Puppy-Named Coffee Specials -->
+
+    <!-- Paw Print Separator -->
+    <div class="paw-separator my-8"></div>
+
+    <!-- @COMPONENT: About Section with Puppy Twist -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <!-- Coffee art with paw prints -->
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Beautiful coffee art with heart-shaped latte art surrounded by coffee beans arranged in paw print patterns" class="rounded-3xl shadow-xl w-full">
+                    
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <!-- Coffee beans and paw prints -->
+                        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" alt="Artistic arrangement of coffee beans forming paw print patterns on wooden surface" class="rounded-2xl shadow-lg">
+                        <!-- Cozy cafe with dogs -->
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" alt="Warm, inviting cafe interior with comfortable seating and friendly dogs lounging" class="rounded-2xl shadow-lg">
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="bg-puppy-pink p-3 rounded-full mr-4">
+                            <i class="fas fa-heart text-cream-latte text-xl"></i>
+                        </div>
+                        <span class="font-pacifico text-xl text-puppy-pink">Our Story</span>
+                    </div>
+                    
+                    <h2 class="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-6">
+                        Where Tradition Meets <span class="text-golden-fur">Tail Wags</span>
+                    </h2>
+                    
+                    <p class="text-lg text-coffee-brown opacity-80 mb-6 leading-relaxed">
+                        As a cozy café in the heart of Mumbai, we are a quiet spot for you amidst the city's turmoil. 
+                        Now with our furry friends joining the family, we've created an even more special place where 
+                        coffee lovers and dog lovers unite.
+                    </p>
+                    
+                    <p class="text-lg text-coffee-brown opacity-80 mb-6 leading-relaxed">
+                        "Iteeha" roughly translates to <em>'as per tradition'</em>, and keeping that in mind, we adopted 
+                        the virtue of doing <strong>'Basic but Beautiful'</strong> - now with an extra dose of puppy love. 
+                        We offer light and simple products, but beautifully done, served alongside the warmth of our 
+                        cafe pups.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="text-center p-4 bg-cream-latte rounded-2xl">
+                            <div class="text-2xl font-bold text-coffee-brown">12+</div>
+                            <div class="text-coffee-brown opacity-70">Resident Pups</div>
+                        </div>
+                        <div class="text-center p-4 bg-cream-latte rounded-2xl">
+                            <div class="text-2xl font-bold text-coffee-brown">3</div>
+                            <div class="text-coffee-brown opacity-70">Mumbai Locations</div>
+                        </div>
+                    </div>
+                    
+                    <button class="bg-playful-teal text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor">
+                        <i class="fas fa-paw mr-2"></i>Learn More About Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: About Section with Puppy Twist -->
+
+    <!-- @COMPONENT: Pet Adoption Community Section -->
+    <section class="py-20 bg-gradient-to-br from-puppy-pink via-cream-latte to-golden-fur">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-6">
+                    Brewing Community, <span class="font-pacifico text-playful-teal">One Adoption at a Time</span>
+                </h2>
+                
+                <p class="text-xl text-coffee-brown opacity-80 mb-12 leading-relaxed">
+                    Every month, we partner with local animal shelters to host adoption events. 
+                    When you adopt a furry friend, your first month of coffee is on us!
+                </p>
+                
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="bg-white p-6 rounded-3xl shadow-lg">
+                        <div class="bg-golden-fur p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-home text-coffee-brown text-xl"></i>
+                        </div>
+                        <h3 class="font-baloo text-xl font-bold text-coffee-brown mb-2">Find Your Match</h3>
+                        <p class="text-coffee-brown opacity-70">Browse adoptable pets at our monthly events</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-3xl shadow-lg">
+                        <div class="bg-playful-teal p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-coffee text-cream-latte text-xl"></i>
+                        </div>
+                        <h3 class="font-baloo text-xl font-bold text-coffee-brown mb-2">Free Coffee Month</h3>
+                        <p class="text-coffee-brown opacity-70">Adopters get unlimited coffee for 30 days</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-3xl shadow-lg">
+                        <div class="bg-puppy-pink p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-heart text-cream-latte text-xl"></i>
+                        </div>
+                        <h3 class="font-baloo text-xl font-bold text-coffee-brown mb-2">Ongoing Support</h3>
+                        <p class="text-coffee-brown opacity-70">Join our pet parent community</p>
+                    </div>
+                </div>
+                
+                <button class="bg-coffee-brown text-cream-latte px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor">
+                    <i class="fas fa-calendar mr-2"></i>Next Adoption Event: Dec 15th
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Pet Adoption Community Section -->
+
+    <!-- Paw Print Separator -->
+    <div class="paw-separator my-8"></div>
+
+    <!-- @COMPONENT: Menu Section -->
+    <section id="menu" class="py-20 bg-cream-latte">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-4">
+                    Our Complete Menu
+                </h2>
+                <p class="text-xl text-coffee-brown opacity-80">
+                    Thoughtfully curated coffee, bakes, artisanal teas, and premium sandwiches
+                </p>
+                <div class="flex items-center justify-center mt-6 space-x-4">
+                    <span class="bg-coffee-brown text-cream-latte px-4 py-2 rounded-full">₹500-1050 for Two</span>
+                    <span class="bg-playful-teal text-coffee-brown px-4 py-2 rounded-full">7:30 AM - 11:30 PM</span>
+                </div>
+            </div>
+            
+            <!-- Menu Categories -->
+            <div class="grid lg:grid-cols-4 gap-8">
+                <!-- Coffee & Espresso -->
+                <div class="bg-white rounded-3xl p-6 shadow-lg">
+                    <div class="text-center mb-6">
+                        <div class="bg-coffee-brown p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-coffee text-cream-latte text-xl"></i>
+                        </div>
+                        <h3 class="font-baloo text-2xl font-bold text-coffee-brown">Coffee & Espresso</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Espresso</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Rich, bold, concentrated shot</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹160</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Latte</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Smooth espresso with steamed milk</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹200</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Cappuccino</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Perfect balance with foam</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹190</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Mocha</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Espresso with chocolate</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹220</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Cold Brew</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Smooth, refreshing</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹250</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Food & Bakes -->
+                <div class="bg-white rounded-3xl p-6 shadow-lg">
+                    <div class="text-center mb-6">
+                        <div class="bg-caramel p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-bread-slice text-cream-latte text-xl"></i>
+                        </div>
+                        <h3 class="font-baloo text-2xl font-bold text-coffee-brown">Food & Bakes</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Spiced Chicken Sandwich</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Tender spiced chicken</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹330</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Ham & Cheese</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Premium ham and cheese</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹380</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Grilled Veg Pesto</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">House-made pesto</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹350</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Chocolate Croissant</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Buttery with chocolate</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹520</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Chocolate Cake</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Rich, moist slice</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹280</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Artisanal Teas -->
+                <div class="bg-white rounded-3xl p-6 shadow-lg">
+                    <div class="text-center mb-6">
+                        <div class="bg-playful-teal p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-leaf text-cream-latte text-xl"></i>
+                        </div>
+                        <h3 class="font-baloo text-2xl font-bold text-coffee-brown">Artisanal Teas</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Green Tea Pure Joy</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Pure green tea leaves</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹150</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Orange Blossom</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Black tea with orange</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹160</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Oolong Rose</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Delicate with rose petals</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹170</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Fleur Lemon</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Black tea with lemon</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹160</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Matcha Specials</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Various matcha blends</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹320+</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Beverages -->
+                <div class="bg-white rounded-3xl p-6 shadow-lg">
+                    <div class="text-center mb-6">
+                        <div class="bg-golden-fur p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-glass-whiskey text-coffee-brown text-xl"></i>
+                        </div>
+                        <h3 class="font-baloo text-2xl font-bold text-coffee-brown">Other Beverages</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Hot Chocolate</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">54% dark chocolate ganache</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹200</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Cold-Pressed Juice</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Daily fresh selection</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹180</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Artisanal Lemonade</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Fresh lemon with herbs</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹150</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center border-b border-cream-latte pb-2">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Coffee Lemonade</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">Coffee and citrus blend</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹250</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold text-coffee-brown">Pallonji's Cold Brew</h4>
+                                <p class="text-sm text-coffee-brown opacity-70">300ml signature bottle</p>
+                            </div>
+                            <span class="font-bold text-caramel">₹450</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-coffee-brown text-cream-latte px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor">
+                    <i class="fas fa-shopping-cart mr-2"></i>Order Online Now
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Menu Section -->
+
+    <!-- @COMPONENT: Customer Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-4">
+                    Coffee Stories & <span class="font-pacifico text-puppy-pink">Pup Tales</span>
+                </h2>
+                <p class="text-xl text-coffee-brown opacity-80">
+                    What our coffee lovers and dog parents say about their magical experiences
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-cream-latte p-8 rounded-3xl shadow-lg text-center">
+                    <div class="flex justify-center mb-4">
+                        <img src="https://pixabay.com/get/gfb76380af2ede7d1f20b34badd2aec5aa917ff642a6e4ff6df2e3f58f1488c3c089ecdf5e6dce926ac77d262f9352aa5bcaa31af52a6f760d00b35ad638ba081_1280.jpg" alt="Happy customer Sarah with a warm smile" class="w-16 h-16 rounded-full object-cover">
+                    </div>
+                    <div class="text-4xl text-golden-fur mb-4">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <p class="text-coffee-brown opacity-80 mb-4 italic">
+                        "This place feels like stepping into a coffee wonderland! The pups make every visit special, and every sip is pure magic."
+                    </p>
+                    <div class="text-coffee-brown font-semibold">Sarah M.</div>
+                    <div class="text-coffee-brown opacity-60 text-sm">Coffee & Dog Enthusiast ✨</div>
+                </div>
+                
+                <div class="bg-cream-latte p-8 rounded-3xl shadow-lg text-center">
+                    <div class="flex justify-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150" alt="Regular visitor Rahul enjoying his coffee" class="w-16 h-16 rounded-full object-cover">
+                    </div>
+                    <div class="text-4xl text-playful-teal mb-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <p class="text-coffee-brown opacity-80 mb-4 italic">
+                        "The atmosphere here is absolutely enchanting. Charlie the golden retriever has become my coffee buddy. It's my daily dose of happiness!"
+                    </p>
+                    <div class="text-coffee-brown font-semibold">Rahul K.</div>
+                    <div class="text-coffee-brown opacity-60 text-sm">Regular Visitor ⭐</div>
+                </div>
+                
+                <div class="bg-cream-latte p-8 rounded-3xl shadow-lg text-center">
+                    <div class="flex justify-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150" alt="Business professional Priya in a work setting" class="w-16 h-16 rounded-full object-cover">
+                    </div>
+                    <div class="text-4xl text-puppy-pink mb-4">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-coffee-brown opacity-80 mb-4 italic">
+                        "Perfect blend of tradition and innovation. The pups add such warmth to business meetings. Every visit feels like discovering something new!"
+                    </p>
+                    <div class="text-coffee-brown font-semibold">Priya S.</div>
+                    <div class="text-coffee-brown opacity-60 text-sm">Business Professional 💼</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Customer Testimonials -->
+
+    <!-- Paw Print Separator -->
+    <div class="paw-separator my-8"></div>
+
+    <!-- @COMPONENT: Locations Section -->
+    <section id="contact" class="py-20 bg-coffee-brown text-cream-latte">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-baloo text-4xl lg:text-5xl font-bold mb-4">
+                    Come Sip & <span class="font-pacifico text-golden-fur">Snuggle</span> With Us
+                </h2>
+                <p class="text-xl opacity-90">
+                    We're brewing daily from 7:30 AM to 11:30 PM. Find us in the heart of Mumbai with our furry friends!
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="font-baloo text-3xl font-bold mb-8">Our Mumbai Locations</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-cream-latte bg-opacity-10 p-6 rounded-3xl backdrop-blur">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-golden-fur p-3 rounded-full">
+                                    <i class="fas fa-map-marker-alt text-coffee-brown text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-baloo text-xl font-bold text-golden-fur mb-2">Mahalaxmi</h4>
+                                    <p class="opacity-90 mb-2">
+                                        Ground Floor, Urmi Axis Building, West, behind Famous studio, 
+                                        opp. Doctor Elijah Moses Road, Mahalakshmi, Mumbai, Maharashtra 400011
+                                    </p>
+                                    <div class="flex items-center space-x-4 text-sm">
+                                        <span><i class="fas fa-dog mr-1"></i>5 Resident Pups</span>
+                                        <span><i class="fas fa-paw mr-1"></i>Dog-Friendly Patio</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-cream-latte bg-opacity-10 p-6 rounded-3xl backdrop-blur">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-playful-teal p-3 rounded-full">
+                                    <i class="fas fa-map-marker-alt text-cream-latte text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-baloo text-xl font-bold text-playful-teal mb-2">Lower Parel</h4>
+                                    <p class="opacity-90 mb-2">
+                                        95, Ganpatrao Kadam Marg, Opposite Peninsula Business Park, 
+                                        Lower Parel West, Mumbai, Maharashtra 400013
+                                    </p>
+                                    <div class="flex items-center space-x-4 text-sm">
+                                        <span><i class="fas fa-dog mr-1"></i>4 Resident Pups</span>
+                                        <span><i class="fas fa-paw mr-1"></i>Indoor Play Area</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-cream-latte bg-opacity-10 p-6 rounded-3xl backdrop-blur">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-puppy-pink p-3 rounded-full">
+                                    <i class="fas fa-map-marker-alt text-cream-latte text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-baloo text-xl font-bold text-puppy-pink mb-2">Bandra West</h4>
+                                    <p class="opacity-90 mb-2">
+                                        Shop 6, Shanti Vanam, Hill Road, Bandra West, Mumbai
+                                    </p>
+                                    <div class="flex items-center space-x-4 text-sm">
+                                        <span><i class="fas fa-dog mr-1"></i>3 Resident Pups</span>
+                                        <span><i class="fas fa-paw mr-1"></i>Cozy Corner Seating</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-baloo text-3xl font-bold mb-8">Get in Touch</h3>
+                    
+                    <div class="bg-cream-latte bg-opacity-10 p-8 rounded-3xl backdrop-blur mb-8">
+                        <form class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="text" placeholder="Your Name" class="w-full p-4 rounded-2xl bg-cream-latte text-coffee-brown focus:outline-none focus:ring-2 focus:ring-golden-fur" data-mock="true">
+                                <input type="email" placeholder="Email Address" class="w-full p-4 rounded-2xl bg-cream-latte text-coffee-brown focus:outline-none focus:ring-2 focus:ring-golden-fur" data-mock="true">
+                            </div>
+                            <input type="tel" placeholder="Phone Number" class="w-full p-4 rounded-2xl bg-cream-latte text-coffee-brown focus:outline-none focus:ring-2 focus:ring-golden-fur" data-mock="true">
+                            <select class="w-full p-4 rounded-2xl bg-cream-latte text-coffee-brown focus:outline-none focus:ring-2 focus:ring-golden-fur" data-mock="true">
+                                <option>General Inquiry</option>
+                                <option>Pet Adoption Event</option>
+                                <option>Private Events</option>
+                                <option>Catering Services</option>
+                                <option>Feedback</option>
+                            </select>
+                            <textarea placeholder="Your Message" rows="4" class="w-full p-4 rounded-2xl bg-cream-latte text-coffee-brown focus:outline-none focus:ring-2 focus:ring-golden-fur" data-mock="true"></textarea>
+                            <button type="submit" class="w-full bg-golden-fur text-coffee-brown py-4 rounded-2xl font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor">
+                                <i class="fas fa-paper-plane mr-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-envelope text-golden-fur text-xl"></i>
+                            <span>connect@iteeha.coffee</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-clock text-playful-teal text-xl"></i>
+                            <span>7:30 AM - 11:30 PM (All Days)</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <i class="fab fa-instagram text-puppy-pink text-xl"></i>
+                            <span>@iteeha.coffee</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Locations Section -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="bg-coffee-brown border-t-4 border-golden-fur text-cream-latte py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="relative">
+                            <i class="fas fa-coffee text-2xl text-golden-fur"></i>
+                            <i class="fas fa-heart text-xs text-puppy-pink absolute -top-1 -right-1 animate-pulse"></i>
+                        </div>
+                        <span class="font-baloo text-xl font-bold">Iteeha Coffee & Pups</span>
+                    </div>
+                    <p class="opacity-80 mb-4">
+                        Where tradition meets tail wags. Mumbai's coziest coffee shop with the friendliest furry companions.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-golden-fur hover:text-puppy-pink transition-colors text-xl paw-cursor">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-golden-fur hover:text-puppy-pink transition-colors text-xl paw-cursor">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-golden-fur hover:text-puppy-pink transition-colors text-xl paw-cursor">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-baloo text-lg font-bold mb-4 text-golden-fur">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="opacity-80 hover:opacity-100 hover:text-golden-fur transition-colors paw-cursor">Home</a></li>
+                        <li><a href="#menu" class="opacity-80 hover:opacity-100 hover:text-golden-fur transition-colors paw-cursor">Menu</a></li>
+                        <li><a href="#about" class="opacity-80 hover:opacity-100 hover:text-golden-fur transition-colors paw-cursor">About</a></li>
+                        <li><a href="#contact" class="opacity-80 hover:opacity-100 hover:text-golden-fur transition-colors paw-cursor">Contact</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-golden-fur transition-colors paw-cursor">Order Online</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-baloo text-lg font-bold mb-4 text-playful-teal">Pup Programs</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-playful-teal transition-colors paw-cursor">Adoption Events</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-playful-teal transition-colors paw-cursor">Meet Our Pups</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-playful-teal transition-colors paw-cursor">Pet Parent Community</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-playful-teal transition-colors paw-cursor">Dog Training Tips</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-playful-teal transition-colors paw-cursor">Volunteer Program</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-baloo text-lg font-bold mb-4 text-puppy-pink">Contact Info</h4>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-envelope text-golden-fur"></i>
+                            <span>connect@iteeha.coffee</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock text-golden-fur"></i>
+                            <span>7:30 AM - 11:30 PM</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt text-golden-fur"></i>
+                            <span>3 Mumbai Locations</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-paw text-golden-fur"></i>
+                            <span>12+ Resident Pups</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-cream-latte border-opacity-20 mt-8 pt-8 text-center">
+                <div class="paw-separator mb-4"></div>
+                <p class="opacity-70">
+                    © 2024 Iteeha Coffee & Pups. All rights reserved. Made with 
+                    <i class="fas fa-heart text-puppy-pink mx-1"></i> and lots of 
+                    <i class="fas fa-coffee text-golden-fur mx-1"></i>
+                </p>
+                <p class="opacity-60 text-sm mt-2 font-pacifico">
+                    "Basic but Beautiful" - As per tradition, with extra tail wags ✨
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        // TODO: Implement business logic, API calls, or state management
+        (function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Paw print cursor trail effect
+            let pawPrints = [];
+            const maxPaws = 10;
+            
+            document.addEventListener('mousemove', function(e) {
+                if (e.target.classList.contains('paw-cursor')) {
+                    createPawPrint(e.pageX, e.pageY);
+                }
+            });
+            
+            function createPawPrint(x, y) {
+                const paw = document.createElement('div');
+                paw.innerHTML = '<i class="fas fa-paw"></i>';
+                paw.style.cssText = `
+                    position: absolute;
+                    left: ${x - 10}px;
+                    top: ${y - 10}px;
+                    color: #C98A5D;
+                    font-size: 12px;
+                    pointer-events: none;
+                    z-index: 1000;
+                    animation: paw-print 1s ease-out forwards;
+                `;
+                
+                document.body.appendChild(paw);
+                pawPrints.push(paw);
+                
+                if (pawPrints.length > maxPaws) {
+                    const oldPaw = pawPrints.shift();
+                    if (oldPaw && oldPaw.parentNode) {
+                        oldPaw.parentNode.removeChild(oldPaw);
+                    }
+                }
+                
+                setTimeout(() => {
+                    if (paw && paw.parentNode) {
+                        paw.parentNode.removeChild(paw);
+                        const index = pawPrints.indexOf(paw);
+                        if (index > -1) {
+                            pawPrints.splice(index, 1);
+                        }
+                    }
+                }, 1000);
+            }
+
+            // Add hover animations to menu items
+            document.querySelectorAll('.bg-white.rounded-3xl').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections for scroll animations
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('.md\\:hidden button');
+            const mobileMenu = document.querySelector('.hidden.md\\:flex');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
