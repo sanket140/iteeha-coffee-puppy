@@ -19,12 +19,12 @@ export default function Navigation() {
     <nav className="bg-coffee-brown text-cream-latte sticky top-0 z-50 shadow-lg">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-3 paw-cursor" data-testid="logo-link">
+          <Link href="/" className="flex items-center space-x-3 paw-cursor hover-bounce" data-testid="logo-link">
             <div className="relative">
-              <Coffee className="text-2xl text-golden-fur" size={28} />
-              <Heart className="text-xs text-puppy-pink absolute -top-1 -right-1 animate-pulse" size={12} />
+              <Coffee className="text-2xl text-warm-golden hover-wiggle" size={28} />
+              <Heart className="text-xs text-bright-puppy-pink absolute -top-1 -right-1 animate-pulse hover-shake" size={12} />
             </div>
-            <span className="font-baloo text-xl font-bold">Iteeha Coffee & Pups</span>
+            <span className="font-baloo text-xl font-bold hover-wiggle">Iteeha Coffee & Pups</span>
           </Link>
           
           <div className="hidden md:flex items-center space-x-6">
@@ -32,8 +32,8 @@ export default function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`hover:text-golden-fur transition-colors paw-cursor ${
-                  location === item.href ? "text-golden-fur" : ""
+                className={`hover:text-warm-golden transition-colors paw-cursor hover-bounce ${
+                  location === item.href ? "text-warm-golden" : ""
                 }`}
                 data-testid={`nav-${item.label.toLowerCase()}`}
               >
@@ -42,7 +42,7 @@ export default function Navigation() {
             ))}
             <Button 
               asChild
-              className="bg-playful-teal text-coffee-brown px-4 py-2 rounded-full hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor"
+              className="bg-bright-puppy-pink text-coffee-brown px-4 py-2 rounded-full hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor"
               data-testid="button-order-now"
             >
               <Link href="/order-landing">
@@ -54,7 +54,7 @@ export default function Navigation() {
           
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" className="md:hidden text-cream-latte" data-testid="button-mobile-menu">
+              <Button variant="ghost" className="md:hidden text-cream-latte hover-wiggle" data-testid="button-mobile-menu">
                 <Menu size={24} />
               </Button>
             </SheetTrigger>
@@ -64,8 +64,8 @@ export default function Navigation() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`text-lg hover:text-golden-fur transition-colors paw-cursor ${
-                      location === item.href ? "text-golden-fur" : ""
+                    className={`text-lg hover:text-warm-golden transition-colors paw-cursor hover-bounce ${
+                      location === item.href ? "text-warm-golden" : ""
                     }`}
                     onClick={() => setIsOpen(false)}
                     data-testid={`mobile-nav-${item.label.toLowerCase()}`}
@@ -75,7 +75,7 @@ export default function Navigation() {
                 ))}
                 <Button 
                   asChild
-                  className="bg-playful-teal text-coffee-brown mt-4 paw-cursor"
+                  className="bg-bright-puppy-pink text-coffee-brown mt-4 paw-cursor hover-glow"
                   data-testid="button-mobile-order"
                 >
                   <Link href="/order-landing" onClick={() => setIsOpen(false)}>

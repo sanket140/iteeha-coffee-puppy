@@ -43,44 +43,44 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="font-baloo text-lg font-bold mb-4 text-golden-fur">Quick Links</h4>
+            <h4 className="font-baloo text-lg font-bold mb-4 text-warm-golden">Quick Links</h4>
             <ul className="space-y-2">
-              <li><Link href="/" className="opacity-80 hover:opacity-100 hover:text-golden-fur transition-colors paw-cursor" data-testid="footer-link-home">Home</Link></li>
-              <li><Link href="/menu" className="opacity-80 hover:opacity-100 hover:text-golden-fur transition-colors paw-cursor" data-testid="footer-link-menu">Menu</Link></li>
-              <li><Link href="/about" className="opacity-80 hover:opacity-100 hover:text-golden-fur transition-colors paw-cursor" data-testid="footer-link-about">About</Link></li>
-              <li><Link href="/contact" className="opacity-80 hover:opacity-100 hover:text-golden-fur transition-colors paw-cursor" data-testid="footer-link-contact">Contact</Link></li>
-              <li><Link href="/order-landing" className="opacity-80 hover:opacity-100 hover:text-golden-fur transition-colors paw-cursor" data-testid="footer-link-order">Order Online</Link></li>
+              <li><Link href="/" className="opacity-80 hover:opacity-100 hover:text-warm-golden transition-colors paw-cursor hover-bounce" data-testid="footer-link-home">Home</Link></li>
+              <li><Link href="/menu" className="opacity-80 hover:opacity-100 hover:text-warm-golden transition-colors paw-cursor hover-bounce" data-testid="footer-link-menu">Menu</Link></li>
+              <li><Link href="/about" className="opacity-80 hover:opacity-100 hover:text-warm-golden transition-colors paw-cursor hover-bounce" data-testid="footer-link-about">About</Link></li>
+              <li><Link href="/contact" className="opacity-80 hover:opacity-100 hover:text-warm-golden transition-colors paw-cursor hover-bounce" data-testid="footer-link-contact">Contact</Link></li>
+              <li><Link href="/order-landing" className="opacity-80 hover:opacity-100 hover:text-warm-golden transition-colors paw-cursor hover-bounce" data-testid="footer-link-order">Order Online</Link></li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-baloo text-lg font-bold mb-4 text-playful-teal">Pup Programs</h4>
+            <h4 className="font-baloo text-lg font-bold mb-4 text-bright-puppy-pink">Pup Programs</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-playful-teal transition-colors paw-cursor" data-testid="link-adoption">Adoption Events</a></li>
-              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-playful-teal transition-colors paw-cursor" data-testid="link-meet-pups">Meet Our Pups</a></li>
-              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-playful-teal transition-colors paw-cursor" data-testid="link-community">Pet Parent Community</a></li>
-              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-playful-teal transition-colors paw-cursor" data-testid="link-training">Dog Training Tips</a></li>
-              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-playful-teal transition-colors paw-cursor" data-testid="link-volunteer">Volunteer Program</a></li>
+              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-adoption">Adoption Events</a></li>
+              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-meet-pups">Meet Our Pups</a></li>
+              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-community">Pet Parent Community</a></li>
+              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-training">Dog Training Tips</a></li>
+              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-volunteer">Volunteer Program</a></li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-baloo text-lg font-bold mb-4 text-puppy-pink">Contact Info</h4>
+            <h4 className="font-baloo text-lg font-bold mb-4 text-warm-golden">Contact Info</h4>
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-2">
-                <Mail className="text-golden-fur" size={16} />
+                <Mail className="text-bright-puppy-pink" size={16} />
                 <span data-testid="text-email">connect@iteeha.coffee</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Clock className="text-golden-fur" size={16} />
+                <Clock className="text-bright-puppy-pink" size={16} />
                 <span data-testid="text-hours">7:30 AM - 11:30 PM</span>
               </div>
               <div className="flex items-center space-x-2">
-                <MapPin className="text-golden-fur" size={16} />
+                <MapPin className="text-bright-puppy-pink" size={16} />
                 <span data-testid="text-locations">3 Mumbai Locations</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Dog className="text-golden-fur" size={16} />
+                <Dog className="text-bright-puppy-pink" size={16} />
                 <span data-testid="text-pups">12+ Resident Pups</span>
               </div>
             </div>

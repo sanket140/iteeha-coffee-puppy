@@ -78,8 +78,8 @@ export default function Home() {
             <div className="text-center lg:text-left">
               <h1 className="font-baloo text-5xl lg:text-7xl font-bold text-cream-latte mb-6 leading-tight" data-testid="text-hero-title">
                 Coffee. Craft. <br />
-                <span className="text-golden-fur">Conversations</span> <br />
-                <span className="text-puppy-pink font-pacifico text-4xl lg:text-5xl">& Cuddles</span>
+                <span className="text-warm-golden hover-wiggle inline-block">Conversations</span> <br />
+                <span className="text-bright-puppy-pink font-pacifico text-4xl lg:text-5xl hover-bounce inline-block">& Cuddles</span>
               </h1>
               
               <p className="text-xl text-cream-latte mb-8 opacity-90" data-testid="text-hero-subtitle">
@@ -90,7 +90,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button 
                   asChild
-                  className="bg-playful-teal text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor relative steam-effect"
+                  className="bg-bright-puppy-pink text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor relative steam-effect"
                   data-testid="button-order-now-hero"
                 >
                   <Link href="/order-landing">
@@ -101,7 +101,7 @@ export default function Home() {
                 <Button 
                   asChild
                   variant="outline"
-                  className="border-2 border-cream-latte text-cream-latte bg-transparent px-8 py-4 rounded-full font-semibold hover:bg-cream-latte hover:text-coffee-brown transition-all transform hover:scale-105 paw-cursor"
+                  className="border-2 border-warm-golden text-warm-golden bg-transparent px-8 py-4 rounded-full font-semibold hover:bg-warm-golden hover:text-coffee-brown transition-all transform hover:scale-110 hover-bounce paw-cursor"
                   data-testid="button-meet-pups"
                 >
                   <Link href="/about">
@@ -120,12 +120,12 @@ export default function Home() {
                 data-testid="img-hero-cafe"
               />
               
-              <div className="absolute -bottom-6 -right-6 bg-golden-fur p-4 rounded-full shadow-lg animate-wag">
-                <Dog className="text-coffee-brown" size={32} />
+              <div className="absolute -bottom-6 -right-6 bg-warm-golden p-4 rounded-full shadow-lg animate-wag hover-bounce">
+                <Dog className="text-coffee-brown hover-wiggle" size={32} />
               </div>
               
-              <div className="absolute -top-6 -left-6 bg-puppy-pink p-4 rounded-full shadow-lg">
-                <Heart className="text-cream-latte animate-pulse" size={24} />
+              <div className="absolute -top-6 -left-6 bg-bright-puppy-pink p-4 rounded-full shadow-lg animate-float">
+                <Heart className="text-cream-latte animate-pulse hover-shake" size={24} />
               </div>
             </div>
           </div>
@@ -138,17 +138,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Paw Print Separator */}
-      <div className="paw-separator my-8"></div>
+      {/* Heart Separator */}
+      <div className="heart-separator my-8"></div>
 
       {/* Our Favorites */}
       <section className="py-20 bg-cream-latte">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-4" data-testid="text-favorites-title">
-              Our Pup-ular Favorites
+            <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-4 hover-wiggle" data-testid="text-favorites-title">
+              Our <span className="text-bright-puppy-pink">Pup-ular</span> Favorites
             </h2>
-            <p className="text-xl text-coffee-brown opacity-80 font-pacifico" data-testid="text-favorites-subtitle">
+            <p className="text-xl text-coffee-brown opacity-80 font-pacifico hover-bounce" data-testid="text-favorites-subtitle">
               Handcrafted with premium ingredients and a dash of puppy love
             </p>
           </div>
@@ -157,7 +157,7 @@ export default function Home() {
             {favorites.map((item) => (
               <Card 
                 key={item.id}
-                className="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 paw-cursor group"
+                className="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all transform hover:scale-110 hover-glow paw-cursor group"
                 data-testid={`card-favorite-${item.id}`}
               >
                 <CardContent className="p-6">
@@ -182,8 +182,8 @@ export default function Home() {
                     </p>
                     
                     <div className="flex items-center justify-between">
-                      <span className="text-2xl font-bold text-caramel" data-testid={`price-favorite-${item.id}`}>{item.price}</span>
-                      <div className={`${item.iconColor} group-hover:animate-wag`}>
+                      <span className="text-2xl font-bold text-caramel hover-wiggle" data-testid={`price-favorite-${item.id}`}>{item.price}</span>
+                      <div className={`${item.iconColor} group-hover:animate-wag hover-bounce`}>
                         <Dog size={20} />
                       </div>
                     </div>
@@ -196,7 +196,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Button 
               asChild
-              className="bg-coffee-brown text-cream-latte px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor"
+              className="bg-warm-golden text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor"
               data-testid="button-see-full-menu"
             >
               <Link href="/menu">
@@ -208,8 +208,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Paw Print Separator */}
-      <div className="paw-separator my-8"></div>
+      {/* Coffee Bean Separator */}
+      <div className="coffee-bean-separator my-8"></div>
 
       {/* Our Story */}
       <section className="py-20 bg-white">
@@ -247,8 +247,8 @@ export default function Home() {
                 <span className="font-pacifico text-xl text-puppy-pink" data-testid="text-story-badge">Our Story</span>
               </div>
               
-              <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-6" data-testid="text-story-title">
-                Where Tradition Meets <span className="text-golden-fur">Tail Wags</span>
+              <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-6 hover-wiggle" data-testid="text-story-title">
+                Where Tradition Meets <span className="text-warm-golden hover-bounce inline-block">Tail Wags</span>
               </h2>
               
               <p className="text-lg text-coffee-brown opacity-80 mb-6 leading-relaxed" data-testid="text-story-p1">
@@ -281,7 +281,7 @@ export default function Home() {
               
               <Button 
                 asChild
-                className="bg-playful-teal text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor"
+                className="bg-bright-puppy-pink text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor"
                 data-testid="button-learn-more"
               >
                 <Link href="/about">
@@ -298,8 +298,8 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-br from-puppy-pink via-cream-latte to-golden-fur">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-6" data-testid="text-adoption-title">
-              Brewing Community, <span className="font-pacifico text-playful-teal">One Adoption at a Time</span>
+            <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-6 hover-wiggle" data-testid="text-adoption-title">
+              Brewing Community, <span className="font-pacifico text-bright-puppy-pink hover-bounce inline-block">One Adoption at a Time</span>
             </h2>
             
             <p className="text-xl text-coffee-brown opacity-80 mb-12 leading-relaxed" data-testid="text-adoption-description">
@@ -339,7 +339,7 @@ export default function Home() {
               </Card>
             </div>
             
-            <Button className="bg-coffee-brown text-cream-latte px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor" data-testid="button-next-event">
+            <Button className="bg-warm-golden text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor" data-testid="button-next-event">
               <Calendar className="mr-2" size={20} />
               Next Adoption Event: Dec 15th
             </Button>
@@ -354,8 +354,8 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-4" data-testid="text-testimonials-title">
-              Coffee Stories & <span className="font-pacifico text-puppy-pink">Pup Tales</span>
+            <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-4 hover-wiggle" data-testid="text-testimonials-title">
+              Coffee Stories & <span className="font-pacifico text-bright-puppy-pink hover-bounce inline-block">Pup Tales</span>
             </h2>
             <p className="text-xl text-coffee-brown opacity-80" data-testid="text-testimonials-subtitle">
               What our coffee lovers and dog parents say about their magical experiences
@@ -389,14 +389,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Paw Print Separator */}
-      <div className="paw-separator my-8"></div>
+      {/* Heart Separator */}
+      <div className="heart-separator my-8"></div>
 
       {/* Final CTA */}
       <section className="py-20 bg-coffee-brown text-cream-latte">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-baloo text-4xl lg:text-5xl font-bold mb-4" data-testid="text-cta-title">
-            Come Sip & <span className="font-pacifico text-golden-fur">Snuggle</span> With Us
+          <h2 className="font-baloo text-4xl lg:text-5xl font-bold mb-4 hover-wiggle" data-testid="text-cta-title">
+            Come Sip & <span className="font-pacifico text-warm-golden hover-bounce inline-block">Snuggle</span> With Us
           </h2>
           <p className="text-xl opacity-90 mb-8" data-testid="text-cta-subtitle">
             We're brewing daily from 7:30 AM to 11:30 PM. Find us in the heart of Mumbai with our furry friends!
@@ -405,7 +405,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               asChild
-              className="bg-playful-teal text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 paw-cursor"
+              className="bg-bright-puppy-pink text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor"
               data-testid="button-visit-us"
             >
               <Link href="/contact">
@@ -416,7 +416,7 @@ export default function Home() {
             <Button 
               asChild
               variant="outline"
-              className="border-2 border-cream-latte text-cream-latte bg-transparent px-8 py-4 rounded-full font-semibold hover:bg-cream-latte hover:text-coffee-brown transition-all transform hover:scale-105 paw-cursor"
+              className="border-2 border-warm-golden text-warm-golden bg-transparent px-8 py-4 rounded-full font-semibold hover:bg-warm-golden hover:text-coffee-brown transition-all transform hover:scale-110 hover-bounce paw-cursor"
               data-testid="button-order-online"
             >
               <Link href="/order-landing">

@@ -67,6 +67,8 @@ export default {
         "playful-teal": "var(--playful-teal)",
         "puppy-pink": "var(--puppy-pink)",
         "golden-fur": "var(--golden-fur)",
+        "bright-puppy-pink": "var(--bright-puppy-pink)",
+        "warm-golden": "var(--warm-golden)",
       },
       fontFamily: {
         sans: ["var(--font-nunito)"],
