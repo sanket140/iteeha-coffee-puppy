@@ -1,9 +1,46 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
-import { ShoppingCart, Heart, Dog, Home as HomeIcon, Coffee, Calendar, Star } from "lucide-react";
+import { ShoppingCart, Heart, Dog, Home as HomeIcon, Coffee, Calendar, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const carouselImages = [
+    {
+      id: 1,
+      image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=600",
+      title: "Coffee. Craft. Conversations.",
+      subtitle: "let us take care of the rest."
+    },
+    {
+      id: 2,
+      image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=600",
+      title: "Step in, relax,",
+      subtitle: "enjoy every sip with our furry friends."
+    },
+    {
+      id: 3,
+      image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=600",
+      title: "Premium Coffee Experience",
+      subtitle: "handcrafted with love and puppy magic."
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   const favorites = [
     {
       id: 1,
@@ -63,78 +100,92 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-coffee-brown via-caramel to-coffee-brown min-h-screen flex items-center">
-        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-30" 
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
-          }}
-        ></div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="font-baloo text-5xl lg:text-7xl font-bold text-cream-latte mb-6 leading-tight" data-testid="text-hero-title">
-                Coffee. Craft. <br />
-                <span className="text-warm-golden hover-wiggle inline-block">Conversations</span> <br />
-                <span className="text-bright-puppy-pink font-pacifico text-4xl lg:text-5xl hover-bounce inline-block">& Cuddles</span>
-              </h1>
+      {/* Image Carousel Banner Section */}
+      <section className="relative h-screen overflow-hidden">
+        <div className="relative w-full h-full">
+          {carouselImages.map((slide, index) => (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <div 
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url('${slide.image}')`
+                }}
+              ></div>
+              <div className="absolute inset-0 bg-coffee-brown bg-opacity-50"></div>
               
-              <p className="text-xl text-cream-latte mb-8 opacity-90" data-testid="text-hero-subtitle">
-                Where every cup tells a story and every pup finds a friend. 
-                Handcrafted coffee, cozy vibes, and furry companions to warm your heart.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button 
-                  asChild
-                  className="bg-bright-puppy-pink text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor relative steam-effect"
-                  data-testid="button-order-now-hero"
-                >
-                  <Link href="/order-landing">
-                    <ShoppingCart className="mr-2" size={20} />
-                    Order Now
-                  </Link>
-                </Button>
-                <Button 
-                  asChild
-                  variant="outline"
-                  className="border-2 border-warm-golden text-warm-golden bg-transparent px-8 py-4 rounded-full font-semibold hover:bg-warm-golden hover:text-coffee-brown transition-all transform hover:scale-110 hover-bounce paw-cursor"
-                  data-testid="button-meet-pups"
-                >
-                  <Link href="/about">
-                    <Dog className="mr-2" size={20} />
-                    Meet Our Pups
-                  </Link>
-                </Button>
+              <div className="relative z-10 flex items-center justify-center h-full">
+                <div className="text-center text-cream-latte px-4">
+                  <h1 className="font-baloo text-5xl lg:text-7xl font-bold mb-6 leading-tight hover-wiggle">
+                    Coffee. Craft.<br />
+                    <span className="text-warm-golden hover-wiggle inline-block">Conversations</span><br />
+                    <span className="text-bright-puppy-pink font-pacifico text-4xl lg:text-5xl hover-bounce inline-block">& Cuddles</span>
+                  </h1>
+                  
+                  <p className="text-xl mb-8 opacity-90">
+                    Where every cup tells a story and every pup finds a friend.<br />
+                    Handcrafted coffee, cozy vibes, and furry companions to warm your heart.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button 
+                      asChild
+                      className="bg-bright-puppy-pink text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor"
+                    >
+                      <Link href="/order-landing">
+                        <ShoppingCart className="mr-2" size={20} />
+                        Order Now
+                      </Link>
+                    </Button>
+                    <Button 
+                      asChild
+                      variant="outline"
+                      className="border-2 border-warm-golden text-warm-golden bg-transparent px-8 py-4 rounded-full font-semibold hover:bg-warm-golden hover:text-coffee-brown transition-all transform hover:scale-110 hover-bounce paw-cursor"
+                    >
+                      <Link href="/about">
+                        <Dog className="mr-2" size={20} />
+                        Meet Our Pups
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
-            
-            <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Cozy cafe interior with friendly dogs" 
-                className="rounded-3xl shadow-2xl w-full animate-bounce-gentle"
-                data-testid="img-hero-cafe"
+          ))}
+          
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-bright-puppy-pink bg-opacity-80 text-coffee-brown p-3 rounded-full hover:bg-opacity-100 transition-all hover:scale-110 z-20"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-bright-puppy-pink bg-opacity-80 text-coffee-brown p-3 rounded-full hover:bg-opacity-100 transition-all hover:scale-110 z-20"
+          >
+            <ChevronRight size={24} />
+          </button>
+          
+          {/* Dot Indicators */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+            {carouselImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all ${
+                  index === currentSlide
+                    ? 'bg-bright-puppy-pink'
+                    : 'bg-cream-latte bg-opacity-50 hover:bg-opacity-75'
+                }`}
               />
-              
-              <div className="absolute -bottom-6 -right-6 bg-warm-golden p-4 rounded-full shadow-lg animate-wag hover-bounce">
-                <Dog className="text-coffee-brown hover-wiggle" size={32} />
-              </div>
-              
-              <div className="absolute -top-6 -left-6 bg-bright-puppy-pink p-4 rounded-full shadow-lg animate-float">
-                <Heart className="text-cream-latte animate-pulse hover-shake" size={24} />
-              </div>
-            </div>
+            ))}
           </div>
-        </div>
-        
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-cream-latte animate-bounce">
-          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-          </svg>
         </div>
       </section>
 
@@ -145,10 +196,10 @@ export default function Home() {
       <section className="py-20 bg-cream-latte">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-4 hover-wiggle" data-testid="text-favorites-title">
+            <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-4 hover-wiggle">
               Our <span className="text-bright-puppy-pink">Pup-ular</span> Favorites
             </h2>
-            <p className="text-xl text-coffee-brown opacity-80 font-pacifico hover-bounce" data-testid="text-favorites-subtitle">
+            <p className="text-xl text-coffee-brown opacity-80 font-pacifico hover-bounce">
               Handcrafted with premium ingredients and a dash of puppy love
             </p>
           </div>
@@ -158,31 +209,29 @@ export default function Home() {
               <Card 
                 key={item.id}
                 className="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all transform hover:scale-110 hover-glow paw-cursor group"
-                data-testid={`card-favorite-${item.id}`}
               >
                 <CardContent className="p-6">
                   <img 
                     src={item.image} 
                     alt={item.name}
                     className="w-full h-48 object-cover rounded-2xl mb-4"
-                    data-testid={`img-favorite-${item.id}`}
                   />
                   
                   <div className="relative">
-                    <span className={`${item.tagColor} px-3 py-1 rounded-full text-sm font-semibold`} data-testid={`tag-favorite-${item.id}`}>
+                    <span className={`${item.tagColor} px-3 py-1 rounded-full text-sm font-semibold`}>
                       <Dog className="inline mr-1" size={14} />
                       {item.tag}
                     </span>
                     
-                    <h3 className="font-baloo text-2xl font-bold text-coffee-brown mt-4 mb-2" data-testid={`title-favorite-${item.id}`}>
+                    <h3 className="font-baloo text-2xl font-bold text-coffee-brown mt-4 mb-2">
                       {item.name}
                     </h3>
-                    <p className="text-coffee-brown opacity-70 mb-4" data-testid={`description-favorite-${item.id}`}>
+                    <p className="text-coffee-brown opacity-70 mb-4">
                       {item.description}
                     </p>
                     
                     <div className="flex items-center justify-between">
-                      <span className="text-2xl font-bold text-caramel hover-wiggle" data-testid={`price-favorite-${item.id}`}>{item.price}</span>
+                      <span className="text-2xl font-bold text-caramel hover-wiggle">{item.price}</span>
                       <div className={`${item.iconColor} group-hover:animate-wag hover-bounce`}>
                         <Dog size={20} />
                       </div>
@@ -197,7 +246,6 @@ export default function Home() {
             <Button 
               asChild
               className="bg-warm-golden text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor"
-              data-testid="button-see-full-menu"
             >
               <Link href="/menu">
                 <Coffee className="mr-2" size={20} />
@@ -220,7 +268,6 @@ export default function Home() {
                 src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
                 alt="Beautiful coffee art with heart-shaped latte art"
                 className="rounded-3xl shadow-xl w-full"
-                data-testid="img-about-main"
               />
               
               <div className="mt-8 grid grid-cols-2 gap-4">
@@ -228,13 +275,11 @@ export default function Home() {
                   src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
                   alt="Coffee beans arranged in artistic patterns"
                   className="rounded-2xl shadow-lg"
-                  data-testid="img-about-beans"
                 />
                 <img 
                   src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
                   alt="Warm, inviting cafe interior with comfortable seating"
                   className="rounded-2xl shadow-lg"
-                  data-testid="img-about-interior"
                 />
               </div>
             </div>
@@ -244,20 +289,20 @@ export default function Home() {
                 <div className="bg-puppy-pink p-3 rounded-full mr-4">
                   <Heart className="text-cream-latte" size={24} />
                 </div>
-                <span className="font-pacifico text-xl text-puppy-pink" data-testid="text-story-badge">Our Story</span>
+                <span className="font-pacifico text-xl text-puppy-pink">Our Story</span>
               </div>
               
-              <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-6 hover-wiggle" data-testid="text-story-title">
+              <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-6 hover-wiggle">
                 Where Tradition Meets <span className="text-warm-golden hover-bounce inline-block">Tail Wags</span>
               </h2>
               
-              <p className="text-lg text-coffee-brown opacity-80 mb-6 leading-relaxed" data-testid="text-story-p1">
+              <p className="text-lg text-coffee-brown opacity-80 mb-6 leading-relaxed">
                 As a cozy café in the heart of Mumbai, we are a quiet spot for you amidst the city's turmoil. 
                 Now with our furry friends joining the family, we've created an even more special place where 
                 coffee lovers and dog lovers unite.
               </p>
               
-              <p className="text-lg text-coffee-brown opacity-80 mb-6 leading-relaxed" data-testid="text-story-p2">
+              <p className="text-lg text-coffee-brown opacity-80 mb-6 leading-relaxed">
                 "Iteeha" roughly translates to <em>'as per tradition'</em>, and keeping that in mind, we adopted 
                 the virtue of doing <strong>'Basic but Beautiful'</strong> - now with an extra dose of puppy love. 
                 We offer light and simple products, but beautifully done, served alongside the warmth of our 
@@ -267,14 +312,14 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <Card className="text-center p-4 bg-cream-latte">
                   <CardContent className="p-4">
-                    <div className="text-2xl font-bold text-coffee-brown" data-testid="text-pups-count">12+</div>
-                    <div className="text-coffee-brown opacity-70" data-testid="text-pups-label">Resident Pups</div>
+                    <div className="text-2xl font-bold text-coffee-brown">12+</div>
+                    <div className="text-coffee-brown opacity-70">Resident Pups</div>
                   </CardContent>
                 </Card>
                 <Card className="text-center p-4 bg-cream-latte">
                   <CardContent className="p-4">
-                    <div className="text-2xl font-bold text-coffee-brown" data-testid="text-locations-count">3</div>
-                    <div className="text-coffee-brown opacity-70" data-testid="text-locations-label">Mumbai Locations</div>
+                    <div className="text-2xl font-bold text-coffee-brown">3</div>
+                    <div className="text-coffee-brown opacity-70">Mumbai Locations</div>
                   </CardContent>
                 </Card>
               </div>
@@ -282,7 +327,6 @@ export default function Home() {
               <Button 
                 asChild
                 className="bg-bright-puppy-pink text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor"
-                data-testid="button-learn-more"
               >
                 <Link href="/about">
                   <Dog className="mr-2" size={20} />
@@ -298,11 +342,11 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-br from-puppy-pink via-cream-latte to-golden-fur">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-6 hover-wiggle" data-testid="text-adoption-title">
+            <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-6 hover-wiggle">
               Brewing Community, <span className="font-pacifico text-bright-puppy-pink hover-bounce inline-block">One Adoption at a Time</span>
             </h2>
             
-            <p className="text-xl text-coffee-brown opacity-80 mb-12 leading-relaxed" data-testid="text-adoption-description">
+            <p className="text-xl text-coffee-brown opacity-80 mb-12 leading-relaxed">
               Every month, we partner with local animal shelters to host adoption events. 
               When you adopt a furry friend, your first month of coffee is on us!
             </p>
@@ -313,8 +357,8 @@ export default function Home() {
                   <div className="bg-golden-fur p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                     <HomeIcon className="text-coffee-brown" size={24} />
                   </div>
-                  <h3 className="font-baloo text-xl font-bold text-coffee-brown mb-2" data-testid="text-adoption-step1-title">Find Your Match</h3>
-                  <p className="text-coffee-brown opacity-70" data-testid="text-adoption-step1-desc">Browse adoptable pets at our monthly events</p>
+                  <h3 className="font-baloo text-xl font-bold text-coffee-brown mb-2">Find Your Match</h3>
+                  <p className="text-coffee-brown opacity-70">Browse adoptable pets at our monthly events</p>
                 </CardContent>
               </Card>
               
@@ -323,8 +367,8 @@ export default function Home() {
                   <div className="bg-playful-teal p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                     <Coffee className="text-cream-latte" size={24} />
                   </div>
-                  <h3 className="font-baloo text-xl font-bold text-coffee-brown mb-2" data-testid="text-adoption-step2-title">Free Coffee Month</h3>
-                  <p className="text-coffee-brown opacity-70" data-testid="text-adoption-step2-desc">Adopters get unlimited coffee for 30 days</p>
+                  <h3 className="font-baloo text-xl font-bold text-coffee-brown mb-2">Free Coffee Month</h3>
+                  <p className="text-coffee-brown opacity-70">Adopters get unlimited coffee for 30 days</p>
                 </CardContent>
               </Card>
               
@@ -333,13 +377,13 @@ export default function Home() {
                   <div className="bg-puppy-pink p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                     <Heart className="text-cream-latte" size={24} />
                   </div>
-                  <h3 className="font-baloo text-xl font-bold text-coffee-brown mb-2" data-testid="text-adoption-step3-title">Ongoing Support</h3>
-                  <p className="text-coffee-brown opacity-70" data-testid="text-adoption-step3-desc">Join our pet parent community</p>
+                  <h3 className="font-baloo text-xl font-bold text-coffee-brown mb-2">Ongoing Support</h3>
+                  <p className="text-coffee-brown opacity-70">Join our pet parent community</p>
                 </CardContent>
               </Card>
             </div>
             
-            <Button className="bg-warm-golden text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor" data-testid="button-next-event">
+            <Button className="bg-warm-golden text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor">
               <Calendar className="mr-2" size={20} />
               Next Adoption Event: Dec 15th
             </Button>
@@ -354,10 +398,10 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-4 hover-wiggle" data-testid="text-testimonials-title">
+            <h2 className="font-baloo text-4xl lg:text-5xl font-bold text-coffee-brown mb-4 hover-wiggle">
               Coffee Stories & <span className="font-pacifico text-bright-puppy-pink hover-bounce inline-block">Pup Tales</span>
             </h2>
-            <p className="text-xl text-coffee-brown opacity-80" data-testid="text-testimonials-subtitle">
+            <p className="text-xl text-coffee-brown opacity-80">
               What our coffee lovers and dog parents say about their magical experiences
             </p>
           </div>
@@ -371,17 +415,16 @@ export default function Home() {
                       src={testimonial.avatar} 
                       alt={testimonial.name}
                       className="w-16 h-16 rounded-full object-cover"
-                      data-testid={`img-testimonial-${index}`}
                     />
                   </div>
-                  <div className="text-4xl mb-4" data-testid={`icon-testimonial-${index}`}>
+                  <div className="text-4xl mb-4">
                     {testimonial.icon}
                   </div>
-                  <p className="text-coffee-brown opacity-80 mb-4 italic" data-testid={`quote-testimonial-${index}`}>
+                  <p className="text-coffee-brown opacity-80 mb-4 italic">
                     "{testimonial.quote}"
                   </p>
-                  <div className="text-coffee-brown font-semibold" data-testid={`name-testimonial-${index}`}>{testimonial.name}</div>
-                  <div className="text-coffee-brown opacity-60 text-sm" data-testid={`role-testimonial-${index}`}>{testimonial.role}</div>
+                  <div className="text-coffee-brown font-semibold">{testimonial.name}</div>
+                  <div className="text-coffee-brown opacity-60 text-sm">{testimonial.role}</div>
                 </CardContent>
               </Card>
             ))}
@@ -395,10 +438,10 @@ export default function Home() {
       {/* Final CTA */}
       <section className="py-20 bg-coffee-brown text-cream-latte">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-baloo text-4xl lg:text-5xl font-bold mb-4 hover-wiggle" data-testid="text-cta-title">
+          <h2 className="font-baloo text-4xl lg:text-5xl font-bold mb-4 hover-wiggle">
             Come Sip & <span className="font-pacifico text-warm-golden hover-bounce inline-block">Snuggle</span> With Us
           </h2>
-          <p className="text-xl opacity-90 mb-8" data-testid="text-cta-subtitle">
+          <p className="text-xl opacity-90 mb-8">
             We're brewing daily from 7:30 AM to 11:30 PM. Find us in the heart of Mumbai with our furry friends!
           </p>
           
@@ -406,7 +449,6 @@ export default function Home() {
             <Button 
               asChild
               className="bg-bright-puppy-pink text-coffee-brown px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all transform hover:scale-110 hover-glow paw-cursor"
-              data-testid="button-visit-us"
             >
               <Link href="/contact">
                 <Dog className="mr-2" size={20} />
@@ -417,7 +459,6 @@ export default function Home() {
               asChild
               variant="outline"
               className="border-2 border-warm-golden text-warm-golden bg-transparent px-8 py-4 rounded-full font-semibold hover:bg-warm-golden hover:text-coffee-brown transition-all transform hover:scale-110 hover-bounce paw-cursor"
-              data-testid="button-order-online"
             >
               <Link href="/order-landing">
                 <ShoppingCart className="mr-2" size={20} />
