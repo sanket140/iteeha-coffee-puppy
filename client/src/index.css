@@ -176,9 +176,18 @@
   }
 
   @keyframes paw-print {
-    0% { transform: scale(0) rotate(0deg); opacity: 0; }
-    50% { transform: scale(1.3) rotate(8deg); opacity: 1; }
-    100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+    0% { 
+      opacity: 1; 
+      transform: scale(1) rotate(0deg); 
+    }
+    50% { 
+      opacity: 0.7; 
+      transform: scale(1.2) rotate(180deg); 
+    }
+    100% { 
+      opacity: 0; 
+      transform: scale(0.8) rotate(360deg); 
+    }
   }
 
   @keyframes paw-trail {
@@ -198,7 +207,7 @@
 
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-6px); }
+    50% { transform: translateY(-10px); }
   }
 
   @keyframes shake {
@@ -217,7 +226,7 @@
   }
 
   .animate-wiggle {
-    animation: wiggle 0.5s ease-in-out infinite;
+    animation: wiggle 0.5s ease-in-out;
   }
 
   .animate-bounce-gentle {
@@ -233,7 +242,7 @@
   }
 
   .animate-paw-print {
-    animation: paw-print 0.4s ease-out;
+    animation: paw-print 2s ease-out forwards;
   }
 
   .animate-wiggle-fast {
@@ -245,7 +254,7 @@
   }
 
   .animate-shake {
-    animation: shake 0.5s ease-in-out;
+    animation: shake 0.5s ease-in-out infinite;
   }
 
   .animate-glow {
@@ -268,7 +277,7 @@
   }
 
   @keyframes rainbow {
-    0%, 100% { background-position: 0% 50%; }
+    0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
   }
 

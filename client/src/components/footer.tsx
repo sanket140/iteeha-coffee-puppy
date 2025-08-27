@@ -1,102 +1,122 @@
+
 import { Link } from "wouter";
-import { Coffee, Heart, Instagram, Facebook, Twitter, Mail, Clock, MapPin, Dog } from "lucide-react";
+import { Coffee, Dog, Mail, Phone, MapPin, Instagram, Heart, Gamepad2, Star } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-coffee-brown border-t-4 border-golden-fur text-cream-latte py-12">
+    <footer className="bg-coffee-brown text-cream-latte pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8">
-          <div>
+        <div className="grid lg:grid-cols-4 gap-8 mb-8">
+          {/* Brand Section */}
+          <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="relative">
-                <Coffee className="text-2xl text-golden-fur" size={28} />
-                <Heart className="text-xs text-puppy-pink absolute -top-1 -right-1 animate-pulse" size={12} />
+              <div className="bg-bright-puppy-pink p-3 rounded-full">
+                <Coffee className="text-coffee-brown" size={28} />
               </div>
-              <span className="font-baloo text-xl font-bold">Iteeha Coffee & Pups</span>
+              <h3 className="font-baloo text-2xl font-bold">Iteeha Coffee & Pet Paradise</h3>
             </div>
-            <p className="opacity-80 mb-4">
-              Where tradition meets tail wags. Mumbai's coziest coffee shop with the friendliest furry companions.
+            <p className="text-lg mb-6 opacity-90 leading-relaxed">
+              Mumbai's premier pet-friendly coffee destination. Where tradition meets tail wags, 
+              offering premium coffee, delicious food, and everything your furry friends need for a pawsome experience.
             </p>
             <div className="flex space-x-4">
               <a 
                 href="https://www.instagram.com/iteeha.coffee/" 
-                className="text-golden-fur hover:text-puppy-pink transition-colors text-xl paw-cursor"
+                className="bg-bright-puppy-pink p-2 rounded-full hover:bg-opacity-80 transition-colors paw-cursor hover-bounce"
                 data-testid="link-instagram"
               >
-                <Instagram size={24} />
-              </a>
-              <a 
-                href="#" 
-                className="text-golden-fur hover:text-puppy-pink transition-colors text-xl paw-cursor"
-                data-testid="link-facebook"
-              >
-                <Facebook size={24} />
-              </a>
-              <a 
-                href="#" 
-                className="text-golden-fur hover:text-puppy-pink transition-colors text-xl paw-cursor"
-                data-testid="link-twitter"
-              >
-                <Twitter size={24} />
+                <Instagram className="text-coffee-brown" size={20} />
               </a>
             </div>
           </div>
           
+          {/* Quick Links */}
           <div>
-            <h4 className="font-baloo text-lg font-bold mb-4 text-warm-golden">Quick Links</h4>
+            <h4 className="font-baloo text-lg font-bold mb-4 text-bright-puppy-pink">Quick Links</h4>
             <ul className="space-y-2">
-              <li><Link href="/" className="opacity-80 hover:opacity-100 hover:text-warm-golden transition-colors paw-cursor hover-bounce" data-testid="footer-link-home">Home</Link></li>
-              <li><Link href="/menu" className="opacity-80 hover:opacity-100 hover:text-warm-golden transition-colors paw-cursor hover-bounce" data-testid="footer-link-menu">Menu</Link></li>
-              <li><Link href="/about" className="opacity-80 hover:opacity-100 hover:text-warm-golden transition-colors paw-cursor hover-bounce" data-testid="footer-link-about">About</Link></li>
-              <li><Link href="/contact" className="opacity-80 hover:opacity-100 hover:text-warm-golden transition-colors paw-cursor hover-bounce" data-testid="footer-link-contact">Contact</Link></li>
-              <li><Link href="/order-landing" className="opacity-80 hover:opacity-100 hover:text-warm-golden transition-colors paw-cursor hover-bounce" data-testid="footer-link-order">Order Online</Link></li>
+              <li><Link href="/" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-home">Home</Link></li>
+              <li><Link href="/about" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-about">About Us</Link></li>
+              <li><Link href="/menu" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-menu">Menu</Link></li>
+              <li><Link href="/order-landing" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-order">Order Online</Link></li>
+              <li><Link href="/contact" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-contact">Contact</Link></li>
             </ul>
           </div>
           
+          {/* Pet Services */}
           <div>
-            <h4 className="font-baloo text-lg font-bold mb-4 text-bright-puppy-pink">Pup Programs</h4>
+            <h4 className="font-baloo text-lg font-bold mb-4 text-bright-puppy-pink">Pet Services</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-adoption">Adoption Events</a></li>
-              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-meet-pups">Meet Our Pups</a></li>
-              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-community">Pet Parent Community</a></li>
-              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-training">Dog Training Tips</a></li>
-              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce" data-testid="link-volunteer">Volunteer Program</a></li>
+              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce flex items-center" data-testid="link-pet-food">
+                <Dog className="mr-2" size={14} />
+                Premium Pet Food
+              </a></li>
+              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce flex items-center" data-testid="link-pet-toys">
+                <Gamepad2 className="mr-2" size={14} />
+                Interactive Pet Toys
+              </a></li>
+              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce flex items-center" data-testid="link-pet-friendly">
+                <Heart className="mr-2" size={14} />
+                Pet-Friendly Space
+              </a></li>
+              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce flex items-center" data-testid="link-pet-care">
+                <Star className="mr-2" size={14} />
+                Pet Care Tips
+              </a></li>
+              <li><a href="#" className="opacity-80 hover:opacity-100 hover:text-bright-puppy-pink transition-colors paw-cursor hover-bounce flex items-center" data-testid="link-pet-community">
+                <Coffee className="mr-2" size={14} />
+                Pet Parent Community
+              </a></li>
             </ul>
           </div>
-          
-          <div>
-            <h4 className="font-baloo text-lg font-bold mb-4 text-warm-golden">Contact Info</h4>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-center space-x-2">
-                <Mail className="text-bright-puppy-pink" size={16} />
-                <span data-testid="text-email">connect@iteeha.coffee</span>
+        </div>
+        
+        {/* Contact Info Section */}
+        <div className="border-t border-cream-latte border-opacity-20 pt-8 mb-8">
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="flex items-center space-x-3">
+              <Mail className="text-bright-puppy-pink" size={20} />
+              <div>
+                <h5 className="font-semibold">Email Us</h5>
+                <p className="opacity-80 text-sm" data-testid="text-email">connect@iteeha.coffee</p>
               </div>
-              <div className="flex items-center space-x-2">
-                <Clock className="text-bright-puppy-pink" size={16} />
-                <span data-testid="text-hours">7:30 AM - 11:30 PM</span>
+            </div>
+            
+            <div className="flex items-center space-x-3">
+              <Phone className="text-warm-golden" size={20} />
+              <div>
+                <h5 className="font-semibold">Call Us</h5>
+                <p className="opacity-80 text-sm" data-testid="text-phone">+91 98765 43210</p>
               </div>
-              <div className="flex items-center space-x-2">
-                <MapPin className="text-bright-puppy-pink" size={16} />
-                <span data-testid="text-locations">3 Mumbai Locations</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Dog className="text-bright-puppy-pink" size={16} />
-                <span data-testid="text-pups">12+ Resident Pups</span>
+            </div>
+            
+            <div className="flex items-center space-x-3">
+              <MapPin className="text-playful-teal" size={20} />
+              <div>
+                <h5 className="font-semibold">Visit Us</h5>
+                <p className="opacity-80 text-sm" data-testid="text-locations">3 Locations in Mumbai</p>
               </div>
             </div>
           </div>
         </div>
-        
-        <div className="border-t border-cream-latte border-opacity-20 mt-8 pt-8 text-center">
-          <div className="paw-separator mb-4"></div>
-          <p className="opacity-70">
-            © 2024 Iteeha Coffee & Pups. All rights reserved. Made with{" "}
-            <Heart className="inline text-puppy-pink mx-1" size={16} /> and lots of{" "}
-            <Coffee className="inline text-golden-fur mx-1" size={16} />
-          </p>
-          <p className="opacity-60 text-sm mt-2 font-pacifico">
-            "Basic but Beautiful" - As per tradition, with extra tail wags ✨
-          </p>
+
+        {/* Hours & Bottom */}
+        <div className="border-t border-cream-latte border-opacity-20 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-4 md:mb-0">
+              <h5 className="font-baloo text-lg font-bold text-warm-golden mb-2">Hours</h5>
+              <p className="opacity-80" data-testid="text-hours">Daily: 7:30 AM - 11:30 PM</p>
+              <p className="opacity-60 text-sm">Pet-friendly all day, every day!</p>
+            </div>
+            
+            <div className="text-center md:text-right">
+              <p className="opacity-60 text-sm mb-2" data-testid="text-copyright">
+                © 2024 Iteeha Coffee & Pet Paradise. All rights reserved.
+              </p>
+              <p className="text-xs opacity-40">
+                Made with <Heart className="inline text-bright-puppy-pink" size={12} /> for coffee lovers and their furry friends
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
